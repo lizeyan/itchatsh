@@ -9,7 +9,7 @@ def ls(path="."):
 
 
 if __name__ == '__main__':
-    itchatsh.start()
+    itchatsh.start(hotReload=True)
     while True:
         time.sleep(1)
 

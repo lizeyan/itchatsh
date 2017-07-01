@@ -3,8 +3,14 @@ import itchat
 
 
 __command_dispatch__ = {}
-
 __instance__ = None
+__open_shell__ = False
+__version__ = 0.1
+
+
+def set_open(val=True):
+    global __open_shell__
+    __open_shell__ = val
 
 
 def register(command):
@@ -17,13 +23,19 @@ def register(command):
 
 @itchat.msg_register(itchat.content.TEXT)
 def __dispatch__(msg: dict):
+    if not __open_shell__ and msg["ToUserName"] != "filehelper":
+        return ""
     _msg = shlex.split(msg["Content"])
     command = _msg[0]
     if command not in __command_dispatch__:
         return "unrecognized command \"{cmd}\".".format(cmd=command)
     args, kwargs = parse_options(_msg[1:])
     func = __command_dispatch__[command]
-    return func(*args, **kwargs)
+    itchat.send(func(*args, **kwargs), msg["ToUserName"])
+
+
+def send(msg, to="filehelper"):
+    itchat.send(msg, to)
 
 
 def parse_options(opts: list):
@@ -46,9 +58,16 @@ def parse_options(opts: list):
     return args, kwargs
 
 
-def start(login_func=itchat.login):
-    login_func()
-    itchat.run(blockThread=False)
+def start(login_func=itchat.auto_login, block_thread=False, *args, **kwargs):
+    """
+    :param login_func: this func will be executed to login
+    :param block_thread: block current thread or create a new daemon thread
+    :param args: will be passed to login_func
+    :param kwargs: will be passed to login_func
+    :return:
+    """
+    login_func(*args, **kwargs)
+    itchat.run(blockThread=block_thread)
     global __instance__
     __instance__ = itchat.new_instance()
 
