@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(name='ItChatSh',
-      version='1.0.4',
+      version='1.0.5',
       description='Shell on WeChat based on ItChat',
       author='LI ZEYAN',
       url="https://github.com/lizeyan/itchatsh",
