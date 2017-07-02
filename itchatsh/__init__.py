@@ -5,7 +5,6 @@ import itchat
 __command_dispatch__ = {}
 __instance__ = None
 __open_shell__ = False
-__version__ = 0.1
 
 
 def set_open(val=True):

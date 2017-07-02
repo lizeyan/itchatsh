@@ -1,6 +1,5 @@
 import itchatsh
 import os
-import time
 
 
 @itchatsh.register("ls")
@@ -9,7 +8,5 @@ def ls(path="."):
 
 
 if __name__ == '__main__':
-    itchatsh.start(hotReload=True)
-    while True:
-        time.sleep(1)
+    itchatsh.start(hotReload=True, block_thread=True)
 
