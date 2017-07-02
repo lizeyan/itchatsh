@@ -10,5 +10,5 @@ setup(name='ItChatSh',
       author_email='zy-li14@hotmail.com',
       packages=['itchatsh'],
       license="MIT",
-      install_requires=['itchat'],
+      requires=['itchat'],
       )
