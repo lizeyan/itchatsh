@@ -5,14 +5,15 @@ Suppose that there is a deep neural network running on a server, you may want to
  
 ## Install
 
-1. 
-``` bash
-python3 setup.py install
-```
-2. 
-``` bash
-pip3 install itchatsh
-```
+1. use setuptools
+  ``` bash
+  python3 setup.py install
+  ```
+
+2. use pip (recommanded)
+  ``` bash
+  pip3 install itchatsh
+  ```
 
 ## Usage
 
@@ -28,3 +29,5 @@ def ls(path="."):
 if __name__ == '__main__':
     itchatsh.start(hotReload=True, block_thread=True)
 ```
+
+There are more examples in `./example/`
