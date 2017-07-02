@@ -5,6 +5,15 @@ Suppose that there is a deep neural network running on a server, you may want to
  
 ## Install
 
+1. 
+``` bash
+python3 setup.py install
+```
+2. 
+``` bash
+pip3 install itchatsh
+```
+
 ## Usage
 
 ``` python
